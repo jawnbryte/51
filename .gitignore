@@ -1,0 +1,13 @@
+node_modules/
+.project_id
+.github_repo
+.env
+.env.*
+.vercel/
+attachments/
+artifacts/
+screenshots/
+.grok/status
+.grok/preview.log
+.grok/og-pending
+.tanstack/
