@@ -4,6 +4,7 @@ import { MiniTuneButton } from "@/components/player-bar";
 import { TrackCover } from "@/components/track-cover";
 import { DecreeSeal } from "@/components/decree-seal";
 import { HashVerify } from "@/components/hash-verify";
+import { PressReview } from "@/components/press-review";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +15,7 @@ import {
   relatedTracks,
   youtubeId,
 } from "@/data/catalog";
+import { getPress } from "@/data/press";
 import { LYRICS } from "@/data/lyrics";
 import { WIRE } from "@/data/wire";
 import { usePlayer } from "@/store/player";
@@ -50,6 +52,7 @@ function TrackPage() {
   const yt = youtubeId(track.youtube);
   const lyrics = LYRICS[track.slug];
   const streamed = Boolean(track.youtube || track.spotifyTrack);
+  const press = getPress(track.slug);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-16">
@@ -76,6 +79,7 @@ function TrackPage() {
             <Badge>{SERIES_META[track.series].label}</Badge>
             {track.sealed ? <Badge tone="sealed">Sealed</Badge> : null}
             {track.explicit ? <Badge tone="muted">Explicit</Badge> : null}
+            {press ? <Badge tone="sealed">{press.outlet}</Badge> : null}
             {track.sealed ? <Badge tone="sealed">Master v1</Badge> : null}
             {track.views ? (
               <Badge tone="muted">{track.views} views</Badge>
@@ -98,6 +102,7 @@ function TrackPage() {
               ))}
               <span className="ml-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em]">
                 {track.rating} / 5
+                {press ? ` · ${press.outlet}` : ""}
               </span>
             </div>
           ) : null}
@@ -303,6 +308,8 @@ function TrackPage() {
           </div>
         </section>
       ) : null}
+
+      {press ? <PressReview clip={press} /> : null}
 
       <section className="mt-20">
         <h2 className="font-display text-2xl tracking-wide">

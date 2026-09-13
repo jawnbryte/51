@@ -16,6 +16,7 @@ import {
 } from "@/data/catalog";
 import { ARTIST, OPERATING_CODE, STRYDER } from "@/data/artist";
 import { DOCTRINE } from "@/data/doctrine";
+import { getPress } from "@/data/press";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -26,6 +27,7 @@ function Home() {
   const sealed = getTrack("phantom-protocol");
   const drop = getTrack("i-wont-do-that");
   const gracie = getTrack("gracie-run-it-back");
+  const graciePress = gracie ? getPress(gracie.slug) : undefined;
 
   return (
     <main>
@@ -104,7 +106,9 @@ function Home() {
             </Link>
             <div className="flex flex-col justify-center px-4 py-12 md:px-10 md:py-16">
               <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-gold">
-                Five-star transmission · Master v1
+                {graciePress
+                  ? `${graciePress.outlet} · ${graciePress.rating} / 5 · Master v1`
+                  : "Five-star transmission · Master v1"}
               </p>
               <h2 className="mt-3 font-display text-4xl tracking-wide md:text-5xl">
                 {gracie.title}
@@ -112,11 +116,19 @@ function Home() {
               <p className="mt-2 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
                 JAWNBRYTE × STRYDER · {gracie.duration} · forged 11 Sep 2026
               </p>
-              <p className="mt-5 max-w-xl font-display text-xl italic leading-snug text-gold-bright">
-                {gracie.inscription}
-              </p>
+              {graciePress ? (
+                <blockquote className="mt-5 max-w-xl border-l-2 border-gold pl-4">
+                  <p className="font-display text-xl italic leading-snug text-gold-bright">
+                    {graciePress.pull}
+                  </p>
+                </blockquote>
+              ) : (
+                <p className="mt-5 max-w-xl font-display text-xl italic leading-snug text-gold-bright">
+                  {gracie.inscription}
+                </p>
+              )}
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-                {gracie.blurb}
+                {graciePress?.verdict ?? gracie.blurb}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <MiniTuneButton slug={gracie.slug} />
@@ -127,6 +139,16 @@ function Home() {
                 >
                   Hear the movement
                 </Link>
+                {graciePress ? (
+                  <Link
+                    to="/track/$slug"
+                    params={{ slug: gracie.slug }}
+                    hash="review"
+                    className="inline-flex h-11 items-center font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-gold"
+                  >
+                    Read the review
+                  </Link>
+                ) : null}
               </div>
             </div>
           </div>
