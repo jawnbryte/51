@@ -144,15 +144,18 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           </div>
           <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
             <p className="text-subtle">Field Discipline</p>
-            <p className="mt-3 text-fg">{LABEL.motto}</p>
-            <p className="mt-3">Coherence before applause</p>
-            <p className="mt-2 text-gold">Longevity before virality</p>
+            <p className="mt-3 text-fg">
+              Coherence before applause.<br />
+              Longevity before virality.
+            </p>
+            <p className="mt-3">Public disrupts. Vault arms.</p>
+            <p className="mt-2 text-gold">I WON'T DO THAT · Sealed</p>
             <Link
               to="/crash"
               className="mt-4 inline-block text-gold transition-colors hover:text-gold-bright"
             >
-              Public disrupts.  Vault arms.
-            </Link
+              C.R.A.S.H. Doctrine 02
+            </Link>
             <Link
               to="/rhythm"
               className="mt-2 inline-block text-gold transition-colors hover:text-gold-bright"
