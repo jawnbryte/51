@@ -143,16 +143,16 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             </p>
           </div>
           <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
-            <p className="text-subtle">Protocol</p>
+            <p className="text-subtle">Field Discipline</p>
             <p className="mt-3 text-fg">{LABEL.motto}</p>
-            <p className="mt-3">Lyte Sketch 143 · Phantom Protocol</p>
-            <p className="mt-2 text-gold">I WON'T DO THAT · Sealed</p>
+            <p className="mt-3">Coherence before applause</p>
+            <p className="mt-2 text-gold">Longevity before virality</p>
             <Link
               to="/crash"
               className="mt-4 inline-block text-gold transition-colors hover:text-gold-bright"
             >
-              C.R.A.S.H. Doctrine 02
-            </Link>
+              Public disrupts.  Vault arms.
+            </Link
             <Link
               to="/rhythm"
               className="mt-2 inline-block text-gold transition-colors hover:text-gold-bright"
