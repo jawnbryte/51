@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CinematicHero } from "@/components/cinematic-hero";
+import { VoyageSpread } from "@/components/voyage-spread";
 import { CRASH } from "@/data/artist";
 import { LABEL, LINKS } from "@/data/catalog";
 import { MJ12, WIRE } from "@/data/wire";
@@ -198,6 +199,12 @@ function LabelPage() {
           >
             Open Phantom Protocol
           </Link>
+        </div>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+          <VoyageSpread compact />
         </div>
       </section>
 

@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CinematicHero } from "@/components/cinematic-hero";
+import { VoyageSpread } from "@/components/voyage-spread";
 import { ARTIST, CHAPTERS, OPERATING_CODE } from "@/data/artist";
-import { LINKS, getTrack } from "@/data/catalog";
+import { getTrack } from "@/data/catalog";
 
 export const Route = createFileRoute("/artist")({ component: ArtistPage });
 
@@ -113,6 +114,12 @@ function ArtistPage() {
         </div>
       </section>
 
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+          <VoyageSpread compact />
+        </div>
+      </section>
+
       <section className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6">
         <p className="max-w-lg text-muted">
           The full catalog is the public record. The Voyage LA conversation
@@ -130,11 +137,6 @@ function ArtistPage() {
           </Button>
           <Button asChild variant="ghost">
             <Link to="/crash">C.R.A.S.H. Doctrine</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <a href={LINKS.voyage} target="_blank" rel="noreferrer">
-              Voyage LA interview
-            </a>
           </Button>
         </div>
       </section>

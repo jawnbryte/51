@@ -66,7 +66,7 @@ export function HashVerify({
         <span>{busy ? "Hashing…" : hash ? "Settled" : "Awaiting file"}</span>
       </div>
       <label
-        className="flex min-h-40 cursor-pointer flex-col items-start justify-center px-5 py-8 md:px-6"
+        className="flex min-h-32 cursor-pointer flex-col items-start justify-center px-5 py-6 md:px-6"
         onDragOver={(e) => {
           e.preventDefault();
         }}
